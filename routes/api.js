@@ -22,7 +22,7 @@ router.get('/auth/clientside/newauth', function(req, res, next){
   let id = req.query.client_id
   let redirectUri = req.query.redirect_uri
   console.log('this is is'+id)
-  Client.findOne({clientId:id, clientCallback:redirectUri}, function(err, hasData){
+  Client.findOne({clientId:id}, function(err, hasData){
     if(!err && hasData){    
       console.log('hashData'+hasData)
       res.redirect('/login'+'?client_id='+id)
