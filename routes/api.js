@@ -18,7 +18,7 @@ router.get('/', function(req, res){
 })
 
 
-router.post('/auth/clientside/newauth', function(req, res, next){
+router.get('/auth/clientside/newauth', function(req, res, next){
   let id = req.query.client_id
   let redirectUri = req.query.redirect_uri
   console.log('this is is'+id)
