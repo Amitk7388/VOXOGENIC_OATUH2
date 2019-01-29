@@ -12,6 +12,12 @@ const AccessToken = require('../models/acesstoken')
 *this `route` will verify client details from databaase and after verification will route to `login` page
 *=> please login to `login router` for further details
 */
+
+router.get('/', function(req, res){
+  res.send('Welcome to Voxogenic. start the process')
+})
+
+
 router.post('/auth/clientside/newauth', function(req, res, next){
   let id = req.query.client_id
   let redirectUri = req.query.redirect_uri

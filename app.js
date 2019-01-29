@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', apiRouter).databaseConnection;
 app.use('/users', usersRouter).databaseConnection;
-app.use('/', articlesRouter).databaseConnection;
+app.use(articlesRouter).databaseConnection;
 app.use(clientsRouter).databaseConnection;
 app.use(loginRouter).databaseConnection;
 
@@ -60,7 +60,7 @@ app.use(function(req, res, next) {
 
 
 // error handler
-var PORT = 4880
+const PORT = process.env.PORT || 9063
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
