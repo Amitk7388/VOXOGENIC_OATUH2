@@ -1,0 +1,21 @@
+{
+    "security":{
+        "tokenLife": 3600
+    },
+
+    "mongoose":{
+        "uri": "mongodb://localhost/oauthdatabase"
+    },
+    "default":{
+        "user":{
+            "username":"myapi",
+            "password":"abc12345"
+        }
+    },
+    "client":{
+        "name":"voxogenic",
+        "clientId":"Voxogenic12",
+        "clientSecret":"123456dsfvjhasdvkcq3452346bhjcxvhsdjfhjvsdfb243245jsvjsdhfvhjdsf"
+    }
+
+}
