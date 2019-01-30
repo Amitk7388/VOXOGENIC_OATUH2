@@ -115,7 +115,7 @@ if(refreshToken == undefined){
                 refresh_token :reFreshToken
               }
               console.log(newObj)
-              newObj = JSON.stringify(newObj)
+              // newObj = JSON.stringify(newObj)
               return res.send(JSON.stringify({response:newObj}));
               // return res.json({response:newObj})
             }
