@@ -1,54 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>WHMS</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/manager/home">WHMS</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/manager/home">Home</a></li>
-      
-      <li><a href="#">Add Skill</a></li>
-      
-    </ul>
-  </div>
-</nav>
-  
+    <div class="main">
 
-
-<div class="container">
-
- <div class="row" style="padding-right: 350px; padding-left: 350px;">
-  <div class="col-sm-12">
-      <form method='post' action='/login'>
-        <div class="form-group">
-                
-               <input type="hidden" class="form-control"   name = 'newId' value = "<%= newId %>">
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h1 class="form-title">Welcome to Voxogenic</h1>
+                        <h2 class="form-title">Sign In</h2>
+                        <form method="POST" class="register-form" id="register-form">
+                            <div class="form-group">
+                                <input type="hidden" name="newId"  value="<%= newId %>"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="redirectUri" value="<%= redirectUri%>"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password"/>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
+                        
+                    </div>
                 </div>
-        <div class="form-group">
-                <label >Email:</label>
-               <input type="text" class="form-control"  placeholder = "example@example.com" name = 'email' id="password">
-                </div>
-               <div class="form-group">
-                    <label >Password</label>
-                   <input type="text" class="form-control" placeholder = "******" name = 'password' id="password">
-               </div>
-                 <button type="submit" class="btn btn-default">Submit</button>
-      </form> 
+            </div>
+        </section>
+
+        
     </div>
-  </div>
 
-</div>
-
-</body>
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

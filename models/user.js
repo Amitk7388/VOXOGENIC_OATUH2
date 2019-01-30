@@ -40,9 +40,12 @@ module.exports.createUser = function(newUser, cb){
 module.exports.comparePassword = function(password, hashedPassword, cb){
     bcrypt.compare(password, hashedPassword, function(err, isMatch) {
         if(err){
-            return json({status:false, 
+            let newobj={
+                status:false, 
                 response:err, 
-                devMessage:'there is some issue while matching the password'})
+                devMessage:'there is some issue while matching the password'
+            }
+            return newobj
         }
         else{
             cb(null, isMatch)

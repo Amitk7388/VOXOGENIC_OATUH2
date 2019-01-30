@@ -7,19 +7,29 @@ const crypto = require('crypto')
 const generateToken = require('../auth/generatetoken')
 
 
+router.get('/letcheck', function(req, res){
+    res.render('login', {title:'voxo'})
+})
+
 router.get('/login', function(req, res, next){
     let id = req.query.client_id
+    let redirecturi = req.query.redirect_uri
     console.log(id)
     var newID = id
+    console.log(redirecturi)
     Client.findOne({clientId:id}, function(err, isMatched){
         if(err){
+            console.log(3)
             res.json({response:err, message:'unauthorized'})
         }
         else if(!isMatched){
+            console.log(2)
             res.json({message:'unauthorized'})
         }
         else{
-            res.render('login', {newId:newID})
+            console.log('1')
+            res.render('login', {newId:newID, redirectUri:redirecturi})
+                //, redirectUri:redirecturi}
         }
     })
 })
@@ -30,7 +40,8 @@ router.post('/login', function(req, res){
     let newId = req.body.newId
     let email = req.body.email
     let password = req.body.password
-
+    let redirectUri = req.body.redirectUri
+    console.log(req.body)
     console.log(email+password)
     console.log('this is new Id'+newId)
 
@@ -63,7 +74,8 @@ router.post('/login', function(req, res){
                                 let state = 'state=token'
                                 let auth = '&authuser=0'
                                 console.log(isMatch.clientCallback)
-                                res.redirect(isMatch.clientCallback+'?'+state+'&code='+token+auth)
+                                console.log(redirectUri+'?'+state+'&code='+token+auth)
+                                res.redirect(redirectUri+'?'+state+'&code='+token+auth)
                                 // res.json({response:created, message:'sucessfully created'})
                             }
                         })
