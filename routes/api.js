@@ -56,7 +56,7 @@ router.post('/req/acesstoken/clientside', function(req, res){
   let clientId = req.body.client_id
   let clientSecret = req.body.client_secret
   let redirectUri = req.body.redirect_uri
-  let refreshToken = req.body.refreshtoken
+  let refreshToken = req.body.refresh_token
   console.log('code'+code)
   console.log('clientId'+clientId)
   console.log('clientSecret'+clientSecret)
