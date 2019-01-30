@@ -75,7 +75,7 @@ router.post('/login', function(req, res){
                                 let auth = '&authuser=0'
                                 console.log(isMatch.clientCallback)
                                 console.log(redirectUri+'?'+state+'&code='+token+auth)
-                                res.redirect(redirectUri+'?'+state+'&code='+token+auth)
+                                res.redirect(redirectUri+'?code='+token)
                                 // res.json({response:created, message:'sucessfully created'})
                             }
                         })
