@@ -143,7 +143,7 @@ if(refreshToken == undefined){
           let newToken = {
             userId:data.userId,
             clientId: data.clientId,
-            accessToken: accessTeoken,
+            accessToken: accessToken,
             refreshToken: reFreshToken
           }
           /**
