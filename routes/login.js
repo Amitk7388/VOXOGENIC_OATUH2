@@ -13,7 +13,7 @@ router.get('/letcheck', function(req, res){
 
 router.get('/login', function(req, res, next){
     let id = req.query.client_id
-    let redirecturi = req.query.redirect_uri
+    let redirecturi = req.query.redirecturi
     console.log(id)
     var newID = id
     console.log(redirecturi)
