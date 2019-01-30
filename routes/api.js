@@ -19,6 +19,7 @@ router.get('/', function(req, res){
 
 
 router.get('/auth/clientside/newauth', function(req, res, next){
+  
   let id = req.query.client_id
   let redirectUri = req.query.redirect_uri
   let state = req.query.state
@@ -41,14 +42,25 @@ router.get('/auth/clientside/newauth', function(req, res, next){
 
 
 router.post('/req/acesstoken/clientside', function(req, res){
-  
+  console.log('req query')
+  console.log(req.query)
+  console.log('requesting the headers')
+  console.log(JSON.stringify(req.headers));
+
   let code=  req.query.code
   let clientId = req.query.client_id
   let clientSecret = req.query.client_secret
   let redirectUri = req.query.redirect_uri
   let refreshToken = req.query.refreshtoken
+  console.log('code'+code)
+  console.log('clientId'+clientId)
+  console.log('clientSecret'+clientSecret)
+  console.log('redirectUri'+redirectUri)
+  console.log('refreshToken'+refreshToken)
 
 if(refreshToken == undefined){
+  console.log('accesstoken should be genetrated')
+
   Client.findOne({clientId:clientId, clientSecret:clientSecret, clientCallback:redirectUri}, function(err, isMatch){
       if(err || !isMatch){
         return res.json({status:false, 
@@ -56,6 +68,7 @@ if(refreshToken == undefined){
                         message:'unsuccesfull please try again'})
       }
       Code.findOne({token:code}, function(err, found){
+        console.log('finding the code from database')
         if(err || !found){
           return res.json({status:false, 
                           response:'unauthorized', 
@@ -70,7 +83,7 @@ if(refreshToken == undefined){
           /**
            * `genrating token here accessToken and RefreshToken`
            */
-
+          console.log('generating the accesstoken')
           let accessToken = generateToken.getToken(found.userId)
           let reFreshToken = generateToken.getToken(found.userId)
           console.log('refreashToken'+reFreshToken)
@@ -82,18 +95,21 @@ if(refreshToken == undefined){
             accessToken: accessToken,
             refreshToken: reFreshToken
           })
+          
           AccessToken.createAcessToken(newToken, function(err, created){
             if(err || !created)
             {
               return res.json({response: err, message: 'access token not created'})
             }
             else{
+              console.log(created)
               let newObj= {
                 access_token  :accessToken,
-                token_type    : "Bearer",
+                token_type    : "bearer",
                 expires_in    : 3600,
                 refresh_token :reFreshToken
               }
+              console.log(newobj)
               return res.json({response:newObj})
             }
           })
