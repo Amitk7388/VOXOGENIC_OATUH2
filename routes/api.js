@@ -64,7 +64,7 @@ router.post('/req/acesstoken/clientside', function(req, res){
 if(refreshToken == undefined){
   console.log('accesstoken should be genetrated')
 
-  Client.findOne({clientId:clientId, clientSecret:clientSecret, clientCallback:redirectUri}, function(err, isMatch){
+  Client.findOne({clientId:clientId, clientSecret:clientSecret}, function(err, isMatch){
       if(err || !isMatch){
         return res.json({status:false, 
                         response:'unauthorized', 
