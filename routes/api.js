@@ -116,8 +116,8 @@ if(refreshToken == undefined){
               }
               console.log(newObj)
               // newObj = JSON.stringify(newObj)
-              return res.send(JSON.stringify({response:newObj}));
-              // return res.json({response:newObj})
+              // return res.send(JSON.stringify({response:newObj}));
+              return res.json({response:newObj})
             }
           })
         }
