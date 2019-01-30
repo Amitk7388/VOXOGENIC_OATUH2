@@ -14,6 +14,10 @@ router.get('/letcheck', function(req, res){
 router.get('/login', function(req, res, next){
     let id = req.query.client_id
     let redirecturi = req.query.redirecturi
+    let state = req.query.state;
+    let scope = req.query.scope
+    console.log('state in get login'+state)
+    console.log('scope in get login'+scope)
     console.log(id)
     var newID = id
     console.log(redirecturi)
@@ -28,7 +32,7 @@ router.get('/login', function(req, res, next){
         }
         else{
             console.log('1')
-            res.render('login', {newId:newID, redirectUri:redirecturi})
+            res.render('login', {newId:newID, redirectUri:redirecturi, state:state, scope:scope})
                 //, redirectUri:redirecturi}
         }
     })
@@ -41,7 +45,11 @@ router.post('/login', function(req, res){
     let email = req.body.email
     let password = req.body.password
     let redirectUri = req.body.redirectUri
+    let state = req.body.state;
+    let scope = req.body.scope
+    console.log('down req.body')
     console.log(req.body)
+    console.log('up req.body')
     console.log(email+password)
     console.log('this is new Id'+newId)
 
@@ -71,11 +79,10 @@ router.post('/login', function(req, res){
                             if(err || !created){
                                 res.json({response:err})
                             }else{
-                                let state = 'state=token'
-                                let auth = '&authuser=0'
+                                
                                 console.log(isMatch.clientCallback)
-                                console.log(redirectUri+'?'+state+'&code='+token+auth)
-                                res.redirect(redirectUri+'?code='+token)
+                                console.log(redirectUri+'?code='+token+'&state='+state+'&scope='+scope)
+                                res.redirect(redirectUri+'?code='+token+'&state='+state+'&scope='+scope)
                                 // res.json({response:created, message:'sucessfully created'})
                             }
                         })
