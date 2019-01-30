@@ -37,7 +37,7 @@ router.get('/highscore/details', function(req, res, next) {
         let findTime =dateTime.subtract(today, date).toMinutes();
         console.log(findTime)
 
-        if(findTime > 10){
+        if(findTime > 1){
            return res.json({status:false, response:'Token Expire', token:accessToken})
         }
         return res.json({status:true, response:obj, message:'succesfully message delivered'})
