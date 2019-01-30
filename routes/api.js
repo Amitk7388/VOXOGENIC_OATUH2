@@ -21,11 +21,13 @@ router.get('/', function(req, res){
 router.get('/auth/clientside/newauth', function(req, res, next){
   let id = req.query.client_id
   let redirectUri = req.query.redirect_uri
+  let state = req.query.state
+  let scope = req.query.scope
   console.log('this is is'+id)
   Client.findOne({clientId:id}, function(err, hasData){
     if(!err && hasData){    
       console.log('hashData'+hasData)
-      res.redirect('/login'+'?client_id='+id+'&redirecturi='+redirectUri)
+      res.redirect('/login'+'?client_id='+id+'&redirecturi='+redirectUri+'&state='+state+'&scope='+scope)
     }else{
       console.log('err')
       res.json({response:err})
