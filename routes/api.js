@@ -43,7 +43,7 @@ router.get('/auth/clientside/newauth', function(req, res, next){
 
 router.post('/req/acesstoken/clientside', function(req, res){
   
-  res.setHeader('Content-Type', 'application/json');
+  // res.setHeader('Content-Type', 'application/json');
     
   console.log('req query')
   console.log(req.query)
@@ -117,8 +117,8 @@ if(refreshToken == undefined){
               console.log(newObj)
               // newObj = JSON.stringify(newObj)
               // return res.send(JSON.stringify({response:newObj}));
-              console.log(res.json({response:newObj}))
-              return res.json({response:newObj})
+              console.log(res.json(newObj))
+              return res.json(newObj)
             }
           })
         }
