@@ -45,8 +45,7 @@ router.post('/req/acesstoken/clientside', function(req, res){
   
   // res.setHeader('Content-Type', 'application/json');
     
-  console.log('req query')
-  console.log(req.query)
+
   console.log('req.body')
   console.log(req.body)
   console.log('requesting the headers')
@@ -118,8 +117,7 @@ if(refreshToken == undefined){
               // newObj = JSON.stringify(newObj)
               // return res.send(JSON.stringify({response:newObj}));
               // console.log(res.json(newObj))
-              return res.json(newObj)
-              
+              return res.json(newObj) 
             }
           })
         }
@@ -128,9 +126,11 @@ if(refreshToken == undefined){
 }else{
   AccessToken.findOne({refreshToken:refreshToken}, function(err, data){
     if(err || !data){
+      console.log("ERROR")
       res.json({status:false, response:err, message:'unauthorized token'})
     }
     else{
+      console.log('comes in else')
           /**
            * `genrating again token here accessToken and RefreshToken`
            */
@@ -143,18 +143,21 @@ if(refreshToken == undefined){
           let newToken = {
             userId:data.userId,
             clientId: data.clientId,
-            accessToken: accessToken,
+            accessToken: accessTeoken,
             refreshToken: reFreshToken
           }
           /**
            * `updating the access token and return the json data with refreash Token`
            */
-
+          console.log('newToken')
+          console.log(newToken)
           AccessToken.findOneAndUpdate({refreshToken:refreshToken}, newToken, function(err, updated){
             if(err || !updated){
+              console.log('err update')
               res.json({status:false, devMessage:'there is some while updateing the token'})
             }
             else{
+              console.log('else update')
               let newObj= {
                 access_token  :accessToken,
                 token_type    : "bearer",
