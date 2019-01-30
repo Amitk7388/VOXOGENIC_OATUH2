@@ -114,12 +114,12 @@ if(refreshToken == undefined){
                 expires_in    : 3600,
                 refresh_token :reFreshToken
               }
-              console.log(newObj)
+              // console.log(newObj)
               // newObj = JSON.stringify(newObj)
               // return res.send(JSON.stringify({response:newObj}));
-              console.log(res.json(newObj))
+              // console.log(res.json(newObj))
               return res.json(newObj)
-              // return res.end(JSON.stringify(giveMessage))
+              
             }
           })
         }
@@ -157,11 +157,11 @@ if(refreshToken == undefined){
             else{
               let newObj= {
                 access_token  :accessToken,
-                token_type    : "Bearer",
+                token_type    : "bearer",
                 expires_in    : 3600,
                 refresh_token :reFreshToken
               }
-              return res.json({status:true, response:newObj, message:'please update your accessToken'})
+              return res.json(newObj)
             }
           })
     }
