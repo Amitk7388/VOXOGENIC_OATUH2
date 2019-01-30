@@ -110,7 +110,7 @@ if(refreshToken == undefined){
               let newObj= {
                 access_token  :accessToken,
                 token_type    : "bearer",
-                expires_in    : 60,
+                expires_in    : 300,
                 refresh_token :reFreshToken
               }
               // console.log(newObj)
@@ -163,7 +163,7 @@ if(refreshToken == undefined){
               let newObj= {
                 access_token  :accessToken,
                 token_type    : "bearer",
-                expires_in    : 60,
+                expires_in    : 300,
                 refresh_token :reFreshToken,
                 
               }
