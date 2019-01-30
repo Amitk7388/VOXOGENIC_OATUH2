@@ -42,8 +42,11 @@ router.get('/auth/clientside/newauth', function(req, res, next){
 
 
 router.post('/req/acesstoken/clientside', function(req, res){
+  
   console.log('req query')
   console.log(req.query)
+  console.log('req.body')
+  console.log(req.body)
   console.log('requesting the headers')
   console.log(JSON.stringify(req.headers));
 
